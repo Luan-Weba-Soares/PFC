@@ -1,6 +1,27 @@
 # PFC
 Documentação Passo a Passo para instalar softwares realizados na prática no PFC
 
+### Passo a Passo instalação Greenbone
+
+#### Passo 1) Instalar GVM
+
+```shell
+# Faz update e upgrade dos pacotes
+sudo apt-get update
+sudo apt-get upgrade
+#Instala o gvm
+sudo apt-get install gvm
+# Faz download do banco de dados
+sudo gvm-setup
+# Força sincronização com banco de dados
+sudo gvm-feed-update
+# Script que checa se a instalação foi bem sucedida
+sudo gvm-check-setup
+# Script que inicia o gvm
+sudo gvm-start
+# Comando nmap para criar um arquivo com todos IPs de uma rede doméstica e salvar em um arquivo
+nmap -sP 192.168.1.0/24 | awk '/is up/ {print up}; {gsub(/\(|\)/,""); up = $NF}' > network
+```
 ### Passo a Passo instalação ELK
 
 #### Passo 1: Instalar Elastic
